@@ -36,7 +36,7 @@
     
     {% block extra_head %}{% endblock %}
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <header>
@@ -48,9 +48,9 @@
         {% endblock %}
     </main>
 
-    <footer class="py-3 my-4 border-top">
-        <p class="text-center text-body-secondary">© {% now "Y" %} Ricardo Webley</p>
-    </footer>
+    <div class="mt-auto">
+        {% include 'a_core/_footer.html' %} </body>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous" defer></script>
     {% block extra_js %}{% endblock %}
