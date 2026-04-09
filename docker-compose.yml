@@ -15,5 +15,12 @@ services:
       - .:/app
       - static_files:/app/staticfiles
 
+    networks:
+          - app-network
 volumes:
   static_files:
+
+networks:
+  app-network:
+    external: true
+    
