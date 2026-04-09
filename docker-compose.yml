@@ -1,0 +1,19 @@
+services:
+
+  web:
+    build:
+      context: .
+    container_name: ricardo-website
+    restart: unless-stopped
+    env_file:
+      - .env
+
+    ports:
+      - "127.0.0.1:9000:8000"
+
+    volumes:
+      - .:/app
+      - static_files:/app/staticfiles
+
+volumes:
+  static_files:
