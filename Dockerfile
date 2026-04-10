@@ -27,6 +27,7 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 COPY . .
 
 RUN chmod +x /app/entrypoint.sh && chown -R django:django /app
+RUN mkdir -p /app/staticfiles && chown -R django:django /app/staticfiles
 
 USER django
 
