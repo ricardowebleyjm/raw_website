@@ -13,7 +13,7 @@ services:
 
     volumes:
       - .:/app
-      - static_files:/app/staticfiles
+      - ./staticfiles:/app/staticfiles
 
     networks:
           - app-network
