@@ -17,7 +17,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 
-RUN groupadd -r django && useradd -r -g django django
+#RUN groupadd -r django && useradd -r -g django django
 
 RUN --mount=type=cache,target=/root/.cache/uv \
     --mount=type=bind,source=uv.lock,target=uv.lock \
@@ -26,10 +26,12 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 
 COPY . .
 
-RUN chmod +x /app/entrypoint.sh && chown -R django:django /app
-RUN mkdir -p /app/staticfiles && chown -R django:django /app/staticfiles
+RUN chmod +x /app/entrypoint.sh 
+#&& chown -R django:django /app
+RUN mkdir -p /app/staticfiles 
+#&& chown -R django:django /app/staticfiles
 
-USER django
+#USER django
 
 EXPOSE 8000
 
