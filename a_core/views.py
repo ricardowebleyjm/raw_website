@@ -1,14 +1,30 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpRequest
+from django.contrib import messages
+from .models import Project
+from .forms import ContactForm
 
 def home(request: HttpRequest):
-    return render(request, 'a_core/home.html')
+    featured_projects = Project.objects.filter(is_featured=True)[:3]
+    return render(request, 'a_core/home.html', {'projects': featured_projects})
 
 def contact(request: HttpRequest):
-    return render(request, 'a_core/contact.html')
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Your message has been sent successfully! I will get back to you soon.')
+            return redirect('contact')
+        else:
+            messages.error(request, 'There was an error with your submission. Please check the fields and try again.')
+    else:
+        form = ContactForm()
+        
+    return render(request, 'a_core/contact.html', {'form': form})
 
 def projects(request: HttpRequest):
-    return render(request, 'a_core/projects.html')
+    all_projects = Project.objects.prefetch_related('skills').all()
+    return render(request, 'a_core/projects.html', {'projects': all_projects})
 
 def portfolio(request: HttpRequest):
-    return render(request, 'a_core/portfolio.html')
+    return redirect('projects')

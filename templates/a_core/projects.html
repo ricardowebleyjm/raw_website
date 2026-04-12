@@ -1,6 +1,51 @@
 {% extends 'a_core/base.html' %}
 
-{% block title %}Ricardo Webley | Software Engineer Professional with 5+ Years of Experience{% endblock %}
+{% block title %}Projects | Ricardo Webley{% endblock %}
 
 {% block content %}
+<div class="container py-5 reveal-up">
+  <div class="mb-5 border-bottom border-dark pb-5">
+    <span class="eyebrow">Index</span>
+    <h1 class="display-4 fw-bold">All Projects</h1>
+    <p class="text-secondary lead" style="max-width: 600px;">A comprehensive list of my software engineering work and open-source contributions.</p>
+  </div>
+  
+  <div class="row g-5">
+    {% for project in projects %}
+    <div class="col-md-6 reveal-up delay-{{ forloop.counter }}">
+      <div class="project-item">
+        <div class="project-image-wrapper">
+          {% if project.image_url %}
+            <img src="{{ project.image_url }}" alt="{{ project.title }}">
+          {% else %}
+            <i class="bi bi-code project-icon-placeholder"></i>
+          {% endif %}
+        </div>
+        <div class="project-meta d-flex justify-content-between">
+          <span>{{ project.created_at|date:"Y" }}</span>
+          <span>
+            {% for skill in project.skills.all %}{{ skill.name }}{% if not forloop.last %} &middot; {% endif %}{% endfor %}
+          </span>
+        </div>
+        <h3 class="project-title">{{ project.title }}</h3>
+        <p class="project-description mb-3">{{ project.description }}</p>
+        
+        <div class="d-flex gap-3">
+          {% if project.live_url %}
+          <a href="{{ project.live_url }}" class="text-white text-decoration-none border-bottom border-secondary pb-1" target="_blank">Live Site <i class="bi bi-arrow-up-right ms-1" style="font-size: 0.8rem;"></i></a>
+          {% endif %}
+          {% if project.github_url %}
+          <a href="{{ project.github_url }}" class="text-secondary text-decoration-none border-bottom border-secondary pb-1" target="_blank">Repository <i class="bi bi-github ms-1"></i></a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    {% empty %}
+    <div class="col-12 py-5 text-center text-secondary">
+      <i class="bi bi-folder2-open display-1 mb-3 opacity-25"></i>
+      <h4>No projects published yet!</h4>
+    </div>
+    {% endfor %}
+  </div>
+</div>
 {% endblock %}
