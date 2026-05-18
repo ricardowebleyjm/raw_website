@@ -4,7 +4,7 @@
 
 {% block content %}
 <section class="hero-grid min-vh-100 d-flex align-items-center">
-  <div class="container text-center reveal-up">
+  <div class="container text-center">
     <div class="mb-5">
       <span class="pill-tag d-inline-block mb-4"><i class="bi bi-circle-fill me-2 text-success" style="font-size:8px;"></i>Available for work</span>
       <h1 class="display-huge text-gradient mb-4">Ricardo Webley</h1>
@@ -12,7 +12,7 @@
         Building fast, reliable, and scalable web applications. Over five years of experience crafting modern software architecture.
       </p>
     </div>
-    <div class="d-flex flex-wrap gap-3 justify-content-center reveal-up delay-1">
+    <div class="d-flex flex-wrap gap-3 justify-content-center">
       <a href="{% url 'projects' %}" class="btn-premium">Projects</a>
       <a href="{% url 'contact' %}" class="btn-premium-outline">Contact Me</a>
     </div>
@@ -21,7 +21,7 @@
 
 <section class="border-top border-dark">
   <div class="container py-4">
-    <div class="row align-items-center mb-5 reveal-up">
+    <div class="row align-items-center mb-5">
       <div class="col-md-6">
         <span class="eyebrow">About Me</span>
         <h2 class="display-5 fw-bold mb-4">Passionate about <br><span class="text-secondary">crafting solutions</span> that scale.</h2>
@@ -34,7 +34,7 @@
       </div>
     </div>
     
-    <div class="row g-5 mt-5 border-top border-dark pt-5 reveal-up delay-1">
+    <div class="row g-5 mt-5 border-top border-dark pt-5">
       <div class="col-6 col-md-3">
         <h4 class="text-white mb-3 d-flex align-items-center gap-2"><i class="bi bi-window-sidebar fs-4" style="color: var(--accent);"></i> Frontend</h4>
         <div class="d-flex flex-column gap-2">
@@ -77,7 +77,7 @@
 
 <section class="border-top border-dark">
   <div class="container">
-    <div class="d-flex justify-content-between align-items-end mb-5 reveal-up">
+    <div class="d-flex justify-content-between align-items-end mb-5">
       <div>
         <span class="eyebrow">Selected Work</span>
         <h2 class="display-5 fw-bold mb-0">Featured Projects</h2>
@@ -87,7 +87,7 @@
 
     <div class="row g-5">
       {% for project in projects %}
-      <div class="col-md-6 reveal-up delay-{{ forloop.counter }}">
+      <div class="col-md-6 delay-{{ forloop.counter }}">
         <a href="{{ project.live_url|default:'#' }}" class="project-item" target="_blank">
           <div class="project-image-wrapper">
             {% if project.image_url %}
@@ -116,7 +116,7 @@
 </section>
 
 <section class="border-top border-dark pb-0">
-  <div class="container text-center reveal-up">
+  <div class="container text-center">
     <h2 class="display-4 fw-bold mb-4">Start a conversation.</h2>
     <p class="text-secondary lead mx-auto mb-5" style="max-width: 500px;">
       Open to completely new freelance projects, remote positions, and contract opportunities.
